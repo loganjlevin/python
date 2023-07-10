@@ -6,6 +6,8 @@ Career Foundry's Python for Web Developers Introduction to Python course.
 
 [Exercise 1: Getting Started with Python](#getting-started-with-python)
 
+[Exercise 2: Data Types in Python](#data-types-in-python)
+
 # Getting Started with Python
 
 ## Table of Contents
@@ -81,3 +83,63 @@ The requirements file is a text file that lists package requirements for any par
 - Next, create a new environment called “cf-python-copy”. In this new environment, install packages from the “requirements.txt” file that you generated earlier. To install the packages from this file in any other environment, you run the pip install command with the extra -r argument, followed by the name of your requirements file: > pip install -r requirements.txt.
 
 ![Step 5](./Exercise_1/Step5.PNG)
+
+---
+
+# Data Types in Python
+
+## Table of Contents
+
+[Create a Structure](#create-a-structure)
+
+[First Recipe](#first-recipe)
+
+[Create an Outer Structure](#create-an-outer-structure)
+
+[Generate More Recipes](#generate-more-recipes)
+
+[Print the Ingredients](#print-the-ingredients)
+
+---
+
+## Create a structure
+
+Create a structure named recipe_1 that contains the following keys:
+
+- name (str): Contains the name of the recipe
+- cooking_time (int): Contains the cooking time in minutes
+- ingredients (list): Contains a number of ingredients, each of the str data type
+
+Decide what data structure you would use for this purpose, and in your README file in the repository for this task, describe in approx. 50-75 words why you’ve chosen to use it.
+
+I would use the dictionary data type for creating a recipe because you can associate the keys name, cooking_time, ingredients, each with a different data type and the key names indicate what the values are meant to represent. When using the dictionary data structure the code will be more descriptive. For example if we used a list we would have recipe_1[0] to access the name instead of recipe_1['name']. It is much easier to understand what is going on in the code when using a dictionary.
+
+## First Recipe
+
+The recipe_1 structure that you create will be for a cup of tea, with the following attributes:
+
+- Name: Tea
+- Cooking time: 5 minutes
+- Ingredients: Tea leaves, Sugar, Water
+
+![Step2](./Exercise_2/Step2.PNG)
+
+## Create an Outer Structure
+
+Create an outer structure called all_recipes, and then add recipe_1 to it. Figure out what type of structure you would consider for all_recipes, and briefly note down your justification in the README file. Ideally, this outer structure should be sequential in nature, where multiple recipes can be stored and modified as required.
+
+For the outer structure all_recipes I will use a list because it is sequential in nature and I can easily add, remove, and modify items as needed.
+
+![Step3](./Exercise_2/Step3.PNG)
+
+## Generate More Recipes
+
+You can make your own recipes too! Generate 4 more recipes as recipe_2, recipe_3, recipe_4, and recipe_5, and then add them as well to all_recipes.
+
+![Step4](./Exercise_2/Step4.PNG)
+
+## Print the Ingredients
+
+Once you’re done setting up all_recipes, print the ingredients of each recipe as five different lists, inside the IPython shell.
+
+![Step5](./Exercise_2/Step5.PNG)
