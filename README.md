@@ -8,6 +8,8 @@ Career Foundry's Python for Web Developers Introduction to Python course.
 
 [Exercise 2: Data Types in Python](#data-types-in-python)
 
+[Exercise 3: Operators and Functions in Python](#operators-and-functions-in-python)
+
 # Getting Started with Python
 
 ## Table of Contents
@@ -143,3 +145,78 @@ You can make your own recipes too! Generate 4 more recipes as recipe_2, recipe_3
 Once you’re done setting up all_recipes, print the ingredients of each recipe as five different lists, inside the IPython shell.
 
 ![Step5](./Exercise_2/Step5.PNG)
+
+# Operators and Functions in Python
+
+## Table of Contents
+
+[Open a Python Script](#open-a-python-script)
+
+[Initialize Two Empty Lists](#initialize-two-empty-lists)
+
+[Define a Function](#define-a-function)
+
+[How Many Recipes?](#how-many-recipes)
+
+[Take Recipe N Times](#take-recipe-n-times)
+
+[Iterate Through Recipe List](#iterate-through-recipe-list)
+
+[Display All the Ingredients](#display-all-the-ingredients)
+
+---
+
+## Open a Python Script
+
+Open a Python script in an editor of your choice and name it “Exercise_1.3.py”.
+![Step1](./Exercise_3/Step1.PNG)
+
+## Initialize Two Empty Lists
+
+Initialize two empty lists: recipes_list and ingredients_list.
+![Step2](./Exercise_3/Step2.PNG)
+
+## Define a Function
+
+Define a function called take_recipe, which takes input from the user for the following variables:
+
+- name (str): Stores the name of the recipe.
+- cooking_time (int): Stores the cooking time (in minutes).
+- ingredients (list): A list that stores ingredients, each of the string data type.
+- recipe (dictionary): Stores the name, cooking_time, and ingredients variables (e.g., recipe = {'name': name, 'cooking_time': cooking_time, 'ingredients': ingredients}).
+
+![Step3](./Exercise_3/Step3.PNG)
+
+## How Many Recipes?
+
+In the main section of your code, ask the user how many recipes they would like to enter. Their response will be linked to a variable n.
+
+![Step4](./Exercise_3/Step4.PNG)
+
+## Take Recipe N Times
+
+Run a for loop, which runs n times to perform the following steps:
+
+- Run take_recipe() and store its return output (a dictionary) in a variable called recipe.
+- Run another for loop inside this loop, which iterates through recipe’s ingredients list, where it picks out elements one-by-one as ingredient. It will run the following step inside: if the chosen ingredient isn’t present in ingredients_list, add it to this list. To check if an element ele is present in a sequence seq, you can use the in keyword in a conditional statement as follows: if ele in seq:. Either True or False is returned (remember that you’re checking if ingredient is not in the list, so use the not operator accordingly).
+- Once you’ve finished adding ingredients, append recipe to recipes_list.
+
+![Step5](./Exercise_3/Step5.PNG)
+
+## Iterate Through Recipe List
+
+Run another for loop that iterates through recipes_list, picks out each element (a dictionary) as recipe, and performs the following steps:
+
+- Determine the difficulty of the recipe using the following logic:
+  - If cooking_time is less than 10 minutes, and the number of ingredients is less than 4, set a variable called difficulty to the value of Easy.
+  - If cooking_time is less than 10 minutes, and the number of ingredients is greater than or equal to 4, set a variable called difficulty to the value of Medium.
+  - If cooking_time is greater than or equal to 10 minutes, and the number of ingredients is less than 4, set a variable called difficulty to the value of Intermediate.
+  - If cooking_time is greater than or equal to 10 minutes, and the number of ingredients is greater than or equal to 4, set a variable called difficulty to the value of Hard.
+
+![Step6](./Exercise_3/Step6.PNG)
+
+## Display All the Ingredients
+
+Next, you’ll have to display all the ingredients that you’ve come across so far in all of the recipes that you’ve just entered. In Step 5 you appended these ingredients into ingredient_list. Now it’s time to print them all out. Print them in alphabetical order, in a format similar to this example:
+
+![Step7](./Exercise_3/Step7.PNG)
