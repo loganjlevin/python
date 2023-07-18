@@ -16,6 +16,8 @@ Career Foundry's Python for Web Developers Introduction to Python course.
 
 [Exercise 6: Databases in Python](#databases-in-python)
 
+[Exercise 7: Object-Relational Mapping in Python](#object-relational-mapping-in-python)
+
 # Getting Started with Python
 
 ## Table of Contents
@@ -572,7 +574,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 6. Exit the script using the exit keyword that you defined before (e.g. quit).
    ![quit](./Exercise_6/quit.PNG)
 
-# Databases in Python
+# Object-Relational Mapping in Python
 
 ## Table of Contents
 
