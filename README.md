@@ -571,3 +571,163 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
    ![delete-recipe](./Exercise_6/delete_recipe.PNG)
 6. Exit the script using the exit keyword that you defined before (e.g. quit).
    ![quit](./Exercise_6/quit.PNG)
+
+# Databases in Python
+
+## Table of Contents
+
+[Set Up Your Script and SQLAlchemy](#set-up-your-script-and-sqlalchemy)
+
+[Create Your Model and Table](#create-your-model-and-table)
+
+[Define Your Main Operations](#define-your-main-operations)
+
+[Design Your Main Menu](#design-your-main-menu)
+
+[Finish Up](#finish-up)
+
+---
+
+## Set Up Your Script and SQLAlchemy
+
+1. Open a script file called recipe_app.py.
+2. As you saw earlier, your application requires a number of packages and functions for each part to operate, such as model definitions and session creation. Make sure you import all the packages and methods necessary to build your application.
+3. Set up SQLAlchemy if you haven’t already. Make sure that your MySQL server is up and running. Take note of your username, password, hostname, and database name.
+4. Use the credentials and details above to create an engine object called engine that connects to your desired database. (Note: You can use the database task_database that you created in the previous Exercise.)
+5. Make the session object that you’ll use to make changes to your database. To do this, generate the Session class, bind it to the engine, and initialize the session object.
+
+![part1](./Exercise_7/Part1.PNG)
+
+## Create Your Model and Table
+
+1. The Recipe class should inherit the Base class that you created earlier.
+2. Define an attribute to set the table’s name as final_recipes.
+3. Define these attributes to create columns in your table:
+   - id: integer; primary key; increments itself automatically.
+   - name: string with 50-character limit; stores the recipe’s name.
+   - ingredients: string type; character limit of 255; stores the ingredients of the recipe in the form of a string.
+   - cooking_time: integer; stores the recipe’s cooking time in minutes
+   - difficulty: string with 20-character limit; stores one of four strings that describe the difficulty of the recipe (Easy, Medium, Intermediate, and Hard).
+4. Define a **repr** method that shows a quick representation of the recipe, including the id, name, and difficulty.
+5. Define a **str** method that prints a well-formatted version of the recipe. Get creative with your print statements! Some quick tips:
+   - The \t characters create a tab space, which is equivalent to 4 spaces.
+   - The \n characters string creates a new line. (Remember: these characters are strings, so they’ll always go inside quotation marks.)
+   - To repeat a set of characters multiple times, simply type your desired characters in double quotes, followed by *(<number of times to be repeated>). For example, typing in print("-"*5) would give you -----.
+   - Use the end keyword argument in the print() function to explicitly define what comes after its output. By default, every print() statement creates a new line.
+6. Define a method called calculate_difficulty() to calculate the difficulty of a recipe based on the number of ingredients and cooking time. You may copy the same code from the task in the previous Exercise here, with the exception of the last step (where instead of returning the calculated difficulty, the difficulty level is instead assigned to the instance variable self.difficulty).
+7. Define a method that retrieves the ingredients string inside your Recipe object as a list, called return_ingredients_as_list(). It will follow these steps:
+   - If the instance variable self.ingredients is an empty string, return an empty list.
+   - Otherwise, use the split() method available to strings to split the string into a list wherever there’s a comma followed by a space (,). Return this list.
+8. Once you’re done defining your model, create the corresponding table on the database using the create_all() method from Base.metadata.
+
+![part1](./Exercise_7/Part2.PNG)
+
+## Define Your Main Operations
+
+[Create Recipe](#create-recipe)
+
+[View All Recipes](#view-all-recipes)
+
+[Search By Ingredients](#search-by-ingredients)
+
+[Edit Recipe](#edit-recipe)
+
+[Delete Recipe](#delete-recipe)
+
+### Create Recipe
+
+1. Collect the details of the recipe (name, ingredients, cooking_time) from the user.
+2. Ensure all the inputs are appropriate (e.g., name doesn’t extend past 50 characters, or cooking_time isn’t a letter of the alphabet). Use the following methods to perform these checks for a given string called line:
+   - len() - use len(line) to get the length of line as an integer.
+   - isalnum() - line.isalnum() gives you True or False based on whether line contains alphanumeric characters.
+   - isnumeric() - line.isnumeric() returns True or False based on whether line contains only numbers.
+   - isalpha() - line.isalpha() returns True or False based on whether line contains only alphabetical characters.
+3. Collect the ingredients from the user in the following manner:
+   - Define a temporary empty list called ingredients.
+   - Ask the user how many ingredients they’d like to enter.
+   - Based on this number, run a for loop that collects each ingredient and then adds it to your temporary list, ingredients.
+4. Convert the list ingredients into a string using the join() method, where each ingredient is joined to the other with a comma followed by a space (,).
+5. Create a new object from the Recipe model called recipe_entry using the details above.
+6. Generate the difficulty attribute for this recipe by calling its calculate_difficulty() method.
+7. Add this to your database through the session object, and commit this change.
+
+![create](./Exercise_7/create_recipe.PNG)
+
+### View All Recipes
+
+1. Retrieve all recipes from the database as a list.
+2. If there aren’t any entries, inform the user that there aren’t any entries in your database, and exit the function to return to the main menu. (Tip: to exit the function, simply use the return None statement.)
+3. Loop through this list of recipes, and call each of their **str** methods to display each recipe.
+
+![view](./Exercise_7/view_all_recipes.PNG)
+
+### Search By Ingredients
+
+1. Check if your table has any entries. Use the count() method like below to get the number of entries in the given table: session.query(<model name>).count(). If there aren’t any entries, notify the user, and exit the function.
+2. Retrieve only the values from the ingredients column of your table, and store this into a variable called results.
+3. Initialize an empty list called all_ingredients.
+4. Go through each entry in results, split up the ingredients into a temporary list, and add each ingredient from this list to all_ingredients. Check each ingredient isn’t already on the list before adding.
+5. Display these ingredients to the user, where each ingredient has a number displayed next to it. Ask them by which ingredients they’d like to search for recipes.
+6. The user is allowed to pick these ingredients by typing the numbers corresponding to the ingredients, separated by spaces.
+7. Check that the user’s inputs match the options available. Otherwise, inform the user and exit the function.
+8. Based on the user’s selection as numbers, make a list of ingredients to be searched for, called search_ingredients, which contains these ingredients as strings.
+9. Initialize an empty list called conditions. This list will contain like() conditions for every ingredient to be searched for.
+10. Run a loop that runs through search_ingredients, and performs the following steps:
+    - Make a search string called like_term, which is essentially the ingredient, surrounded by a “%” on either side (e.g., “%Milk%”).
+    - Append the search condition containing like_term to the conditions list (e.g., <Model name>.<column to search in>.like(like_term)).
+11. Retrieve all recipes from the database using the filter() query, containing the list conditions. Display these recipes using the **str** method.
+
+![search](./Exercise_7/search_by_ingredients.PNG)
+
+### Edit Recipe
+
+1. Check if any recipes exist on your database, and continue only if there are any. Otherwise, exit this function.
+2. Retrieve the id and name for each recipe from the database, and store them into results.
+3. From each item in results, display the recipes available to the user.
+4. The user gets to pick a recipe by its id. If the chosen id doesn’t exist, exit the function.
+5. Retrieve the entire recipe that corresponds to this id from the database into a variable called recipe_to_edit.
+6. Display the recipe, including only name, ingredients and cooking_time. difficulty isn’t editable since it is a calculated value. Display a number next to each attribute so that the user gets to pick one.
+7. Ask the user which attribute they’d like to edit by entering the corresponding number. Remember to check the user’s input here.
+8. Based on the input, use if-else statements to edit the respective attribute inside the recipe_to_edit object. Recalculate the difficulty using the object’s calculate_difficulty() method.
+9. Commit these changes to the database.
+
+![edit](./Exercise_7/edit_recipe.PNG)
+
+### Delete Recipe
+
+1. Check if any recipes exist on our database, and continue only if there are any. Otherwise, exit this function.
+2. Retrieve the id and name of every recipe in the database. List these out to the user to choose from.
+3. Ask the user which recipe they’d like to delete by entering the corresponding id. Verify inputs here.
+4. Based on the selected id, retrieve the corresponding object that exists on the database.
+5. Ask the user if they’re sure that they’d like to delete this entry. If it’s a ‘yes’, perform the delete operation and commit this change. Otherwise, exit the function.
+
+![delete](./Exercise_7/delete_recipe.PNG)
+
+# Design Your Main Menu
+
+1. Inside this loop, lay out print statements that display six options:
+   - Create a new recipe
+   - View all recipes
+   - Search for recipes by ingredients
+   - Edit a recipe
+   - Delete a recipe
+   - Additionally, tell the user to type quit to quit the application.
+2. Using if-elif statements, launch the corresponding function based on the user’s input. Use an else statement at the end to handle any malformed input by informing the users of this error and having the loop simply continue to its next iteration to display the main menu again.
+3. Once the user chooses to quit, close session and engine with their respective close() methods, and the script ends there.
+
+![main_menu](./Exercise_7/main_menu.PNG)
+
+# Finish Up
+
+1. Create a few recipes of your own through your application.
+2. Run through each option on the menu, testing the app’s functionality by reading, updating, and deleting entries in your database and taking screenshots of your terminal during these operations.
+
+![create](./Exercise_7/create_test.PNG)
+
+![view](./Exercise_7/view_test.PNG)
+
+![search](./Exercise_7/search_test.PNG)
+
+![edit](./Exercise_7/edit_test.PNG)
+
+![delete](./Exercise_7/delete_test.PNG)

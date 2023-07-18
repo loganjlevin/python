@@ -30,11 +30,26 @@ class Recipe(Base):
         return f"Recipe ID: {self.id} | Recipe Name: {self.name} | Recipe Difficulty: {self.difficulty}"
 
     def __str__(self):
-        print(f"|      ID      | {self.id}")
-        print(f"|     Name     | {self.name}")
-        print(f"| Cooking Time | {self.cooking_time}")
-        print(f"|  Difficulty  | {self.difficulty}")
-        print(f"| Ingredients  | {self.ingredients}")
+        length = max(
+            len(self.ingredients),
+            len(self.name),
+            len(str(self.id)),
+            len(str(self.cooking_time)),
+            len(self.difficulty),
+        )
+        col_bars = "-" * length
+        output = f"\n+--------------+-{col_bars}-+"
+        output += f"\n|      ID      | {str(self.id).center(length)} |"
+        output += f"\n+--------------+-{col_bars}-+"
+        output += f"\n|     Name     | {self.name.center(length)} |"
+        output += f"\n+--------------+-{col_bars}-+"
+        output += f"\n| Cooking Time | {str(self.cooking_time).center(length)} |"
+        output += f"\n+--------------+-{col_bars}-+"
+        output += f"\n|  Difficulty  | {self.difficulty.center(length)} |"
+        output += f"\n+--------------+-{col_bars}-+"
+        output += f"\n| Ingredients  | {self.ingredients.center(length)} |"
+        output += f"\n+--------------+-{col_bars}-+\n"
+        return output
 
     def calc_difficulty(self):
         num_ingredients = len(self.ingredients.split(", "))
@@ -156,7 +171,7 @@ def search_by_ingredients():
         # for every recipe's ingredients...
         for entry in results:
             # split the string into a temp list
-            temp_ingredients = entry.split(", ")
+            temp_ingredients = entry[0].split(", ")
             # for each ingredient in the temp list...
             for ingredient in temp_ingredients:
                 # if it's not already in all_ingredients list...
@@ -168,12 +183,12 @@ def search_by_ingredients():
         input_list = []
         while has_not_recieved_valid_input:
             # Display all the ingredients
-            print("Ingredients Available Across All Recipes")
+            print("\nIngredients Available Across All Recipes")
             print("----------------------------------------")
             for index, ingredient in enumerate(all_ingredients):
                 print(f"{index + 1}. {ingredient}")
 
-            print("By which ingredients would you like to search for recipes?")
+            print("\nBy which ingredients would you like to search for recipes?")
             input_str = str(
                 input(
                     "Enter numbers from the above list representing the ingredients to be searched separated by spaces: "
@@ -183,15 +198,15 @@ def search_by_ingredients():
             num_ingredients = len(all_ingredients)
             has_not_recieved_valid_input = False
             for i in input_list:
-                if i not in range(1, num_ingredients):
+                if not (i.isnumeric()) or int(i) not in range(1, num_ingredients + 1):
                     has_not_recieved_valid_input = True
 
             if has_not_recieved_valid_input:
-                print("Invalid input. Please try again.")
+                print("\nInvalid input. Please try again.")
 
         search_ingredients = []
         for i in input_list:
-            search_ingredients.append(all_ingredients[i - 1])
+            search_ingredients.append(all_ingredients[int(i) - 1])
 
         conditions = []
         for i in search_ingredients:
@@ -199,6 +214,8 @@ def search_by_ingredients():
             conditions.append(Recipe.ingredients.like(like_term))
 
         searched_recipes = session.query(Recipe).filter(*conditions).all()
+        if len(searched_recipes) == 0:
+            print("\nNo recipes contain all of those ingredients.")
         for recipe in searched_recipes:
             print(recipe)
 
@@ -214,20 +231,21 @@ def edit_recipe():
         while has_not_recieved_valid_input:
             print("Recipes")
             print("-------")
-            for i in results:
-                print(f"{i[0]}. {i[1]}")
+            for index, i in enumerate(results):
+                print(f"{index+1}. {i[1]}")
 
             print("Which recipe would you like to edit?")
-            input_id = int(
+            num = int(
                 input(
                     "Enter a number from the above list corresponding to the recipe: "
                 )
             )
-            if input_id in range(1, len(results)):
+            if num in range(1, len(results) + 1):
                 has_not_recieved_valid_input = False
             else:
                 print("Invalid input. Please try again.")
 
+        input_id = results[num - 1][0]
         recipe_to_edit = session.query(Recipe).get(input_id)
 
         has_not_recieved_valid_input = True
@@ -238,7 +256,7 @@ def edit_recipe():
             print(f"3. Cooking time: {recipe_to_edit.cooking_time}")
             input_num = int(input("Enter a number 1-3 corresponding to an attribute: "))
 
-            if input_num in range(1, 3):
+            if input_num in range(1, 4):
                 has_not_recieved_valid_input = False
             else:
                 print("Invalid input. Please try again.")
@@ -271,19 +289,17 @@ def edit_recipe():
             # Get the number of ingredients
             has_not_recieved_valid_input = True
             while has_not_recieved_valid_input:
-                num_ingredients = int(
-                    input(
-                        "How many ingredients would you like to enter? Enter a number greater than 0: "
-                    )
+                num_ingredients = input(
+                    "How many ingredients would you like to enter? Enter a number greater than 0: "
                 )
-                if num_ingredients <= 0:
+                if int(num_ingredients) <= 0:
                     print("You must enter more than 0 ingredients. Please try again.")
                 elif not (num_ingredients.isnumeric()):
                     print("You must enter a numer. Please try again.")
                 else:
                     has_not_recieved_valid_input = False
             # Get each ingredient
-            for i in range(num_ingredients):
+            for i in range(int(num_ingredients)):
                 has_not_recieved_valid_input = True
                 while has_not_recieved_valid_input:
                     ingredient = str(
@@ -301,7 +317,7 @@ def edit_recipe():
                         has_not_recieved_valid_input = False
                 ingredients.append(ingredient)
             # Convert ingredients list to a string where each ingredient is separated by a ,
-            ingredients_string = ingredients.join(", ")
+            ingredients_string = ", ".join(ingredients)
 
             recipe_to_edit.ingredients = ingredients_string
             recipe_to_edit.calc_difficulty()
@@ -310,10 +326,10 @@ def edit_recipe():
             # Get recipe cooking time from user - must be a number greater than 0
             has_not_recieved_valid_input = True
             while has_not_recieved_valid_input:
-                cooking_time = int(
-                    input("Enter the cooking time of the recipe in minutes: ")
+                cooking_time = input(
+                    "Enter the cooking time of the recipe in minutes: "
                 )
-                if cooking_time <= 0:
+                if int(cooking_time) <= 0:
                     print(
                         "Cooking time must be greater than 0 minutes. Please try again."
                     )
@@ -322,7 +338,7 @@ def edit_recipe():
                 else:
                     has_not_recieved_valid_input = False
 
-            recipe_to_edit.cooking_time = cooking_time
+            recipe_to_edit.cooking_time = int(cooking_time)
             recipe_to_edit.calc_difficulty()
 
         session.commit()
@@ -338,20 +354,21 @@ def delete_recipe():
         while has_not_recieved_valid_input:
             print("Recipes")
             print("-------")
-            for i in results:
-                print(f"{i[0]}. {i[1]}")
+            for index, i in enumerate(results):
+                print(f"{index + 1}. {i[1]}")
 
             print("Which recipe would you like to delete?")
-            input_id = int(
+            num = int(
                 input(
                     "Enter a number from the above list corresponding to the recipe: "
                 )
             )
-            if input_id in range(1, len(results)):
+            if num in range(1, len(results) + 1):
                 has_not_recieved_valid_input = False
             else:
                 print("Invalid input. Please try again.")
 
+        input_id = results[num - 1][0]
         recipe_to_delete = session.query(Recipe).get(input_id)
         print(recipe_to_delete)
         print("Are you sure you would like to delete this recipe?")
@@ -369,14 +386,14 @@ def main_menu():
     choice = 0
     while choice != "quit":
         print(
-            "What would you like to do? Enter a number for the corresponding option. 1-5"
+            "\nWhat would you like to do? Enter a number for the corresponding option. 1-5"
         )
         print("1. Create a new recipe")
         print("2. View all recipes")
         print("3. Search for a recipe by ingredients")
         print("4. Edit a recipe")
         print("5. Delete a recipe")
-        print("Type 'quit' to exit the program")
+        print("\nType 'quit' to exit the program")
         choice = input("Enter your choice: ")
 
         if choice == "1":
