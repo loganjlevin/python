@@ -38,7 +38,7 @@ Career Foundry's Python for Web Developers Introduction to Python course.
 
 Install [Python 3.8.7](https://www.python.org/downloads/release/python-387/) on your system if you haven’t already. Make sure that you’re able to access the correct Python installation from your terminal and check that it’s running the correct version by using the python --version command.
 
-![Step 1](./Exercise_1/Step1.PNG)
+![Step 1](./Achievement_1/Exercise_1/Step1.PNG)
 
 ---
 
@@ -46,7 +46,7 @@ Install [Python 3.8.7](https://www.python.org/downloads/release/python-387/) on 
 
 Set up a new virtual environment and name it “cf-python-base”.
 
-![Step 2](./Exercise_1/Step2.PNG)
+![Step 2](./Achievement_1/Exercise_1/Step2.PNG)
 
 ---
 
@@ -58,7 +58,7 @@ Install [Visual Studio Code](https://code.visualstudio.com/download) or another 
 - Store two values a and b from the user and add them to a variable c.
 - Finally, print the value of c to the screen. The print() function can be used to print variable values with the following syntax: print(<variable name>).
 
-![Step 3](./Exercise_1/Step3.PNG)
+![Step 3](./Achievement_1/Exercise_1/Step3.PNG)
 
 ```python
 # Prompt the user to enter the first number
@@ -81,7 +81,7 @@ print("The sum of ", a, "and", b, "is: ", c)
 
 Set up an IPython shell in the virtual environment “cf-python-base”. An IPython shell is similar to the regular Python REPL that you saw earlier but with additional features such as syntax highlighting, auto-indentation and robust auto-complete features. The name of the package to be installed is “ipython,” which is available for install via pip. Verify your installation by launching an IPython shell with the command ipython.
 
-![Step 4](./Exercise_1/Step4.PNG)
+![Step 4](./Achievement_1/Exercise_1/Step4.PNG)
 
 ---
 
@@ -92,7 +92,7 @@ The requirements file is a text file that lists package requirements for any par
 - First, generate a “requirements.txt” file from your source environment. To do this, you use the pip freeze command and all packages (including version numbers) installed in the currently activated environment will be compiled: > pip freeze > requirements.txt.
 - Next, create a new environment called “cf-python-copy”. In this new environment, install packages from the “requirements.txt” file that you generated earlier. To install the packages from this file in any other environment, you run the pip install command with the extra -r argument, followed by the name of your requirements file: > pip install -r requirements.txt.
 
-![Step 5](./Exercise_1/Step5.PNG)
+![Step 5](./Achievement_1/Exercise_1/Step5.PNG)
 
 ---
 
@@ -132,7 +132,7 @@ The recipe_1 structure that you create will be for a cup of tea, with the follow
 - Cooking time: 5 minutes
 - Ingredients: Tea leaves, Sugar, Water
 
-![Step2](./Exercise_2/Step2.PNG)
+![Step2](./Achievement_1/Exercise_2/Step2.PNG)
 
 ## Create an Outer Structure
 
@@ -140,19 +140,19 @@ Create an outer structure called all_recipes, and then add recipe_1 to it. Figur
 
 For the outer structure all_recipes I will use a list because it is sequential in nature and I can easily add, remove, and modify items as needed.
 
-![Step3](./Exercise_2/Step3.PNG)
+![Step3](./Achievement_1/Exercise_2/Step3.PNG)
 
 ## Generate More Recipes
 
 You can make your own recipes too! Generate 4 more recipes as recipe_2, recipe_3, recipe_4, and recipe_5, and then add them as well to all_recipes.
 
-![Step4](./Exercise_2/Step4.PNG)
+![Step4](./Achievement_1/Exercise_2/Step4.PNG)
 
 ## Print the Ingredients
 
 Once you’re done setting up all_recipes, print the ingredients of each recipe as five different lists, inside the IPython shell.
 
-![Step5](./Exercise_2/Step5.PNG)
+![Step5](./Achievement_1/Exercise_2/Step5.PNG)
 
 # Operators and Functions in Python
 
@@ -177,12 +177,12 @@ Once you’re done setting up all_recipes, print the ingredients of each recipe 
 ## Open a Python Script
 
 Open a Python script in an editor of your choice and name it “Exercise_1.3.py”.
-![Step1](./Exercise_3/Step1.PNG)
+![Step1](./Achievement_1/Exercise_3/Step1.PNG)
 
 ## Initialize Two Empty Lists
 
 Initialize two empty lists: recipes_list and ingredients_list.
-![Step2](./Exercise_3/Step2.PNG)
+![Step2](./Achievement_1/Exercise_3/Step2.PNG)
 
 ## Define a Function
 
@@ -193,13 +193,13 @@ Define a function called take_recipe, which takes input from the user for the fo
 - ingredients (list): A list that stores ingredients, each of the string data type.
 - recipe (dictionary): Stores the name, cooking_time, and ingredients variables (e.g., recipe = {'name': name, 'cooking_time': cooking_time, 'ingredients': ingredients}).
 
-![Step3](./Exercise_3/Step3.PNG)
+![Step3](./Achievement_1/Exercise_3/Step3.PNG)
 
 ## How Many Recipes?
 
 In the main section of your code, ask the user how many recipes they would like to enter. Their response will be linked to a variable n.
 
-![Step4](./Exercise_3/Step4.PNG)
+![Step4](./Achievement_1/Exercise_3/Step4.PNG)
 
 ## Take Recipe N Times
 
@@ -209,7 +209,7 @@ Run a for loop, which runs n times to perform the following steps:
 - Run another for loop inside this loop, which iterates through recipe’s ingredients list, where it picks out elements one-by-one as ingredient. It will run the following step inside: if the chosen ingredient isn’t present in ingredients_list, add it to this list. To check if an element ele is present in a sequence seq, you can use the in keyword in a conditional statement as follows: if ele in seq:. Either True or False is returned (remember that you’re checking if ingredient is not in the list, so use the not operator accordingly).
 - Once you’ve finished adding ingredients, append recipe to recipes_list.
 
-![Step5](./Exercise_3/Step5.PNG)
+![Step5](./Achievement_1/Exercise_3/Step5.PNG)
 
 ## Iterate Through Recipe List
 
@@ -221,13 +221,13 @@ Run another for loop that iterates through recipes_list, picks out each element 
   - If cooking_time is greater than or equal to 10 minutes, and the number of ingredients is less than 4, set a variable called difficulty to the value of Intermediate.
   - If cooking_time is greater than or equal to 10 minutes, and the number of ingredients is greater than or equal to 4, set a variable called difficulty to the value of Hard.
 
-![Step6](./Exercise_3/Step6.PNG)
+![Step6](./Achievement_1/Exercise_3/Step6.PNG)
 
 ## Display All the Ingredients
 
 Next, you’ll have to display all the ingredients that you’ve come across so far in all of the recipes that you’ve just entered. In Step 5 you appended these ingredients into ingredient_list. Now it’s time to print them all out. Print them in alphabetical order, in a format similar to this example:
 
-![Step7](./Exercise_3/Step7.PNG)
+![Step7](./Achievement_1/Exercise_3/Step7.PNG)
 
 # File Handling in Python
 
@@ -245,13 +245,13 @@ Next, you’ll have to display all the ingredients that you’ve come across so 
 
 1. Import the pickle module so you can work with binary files.
 
-![Step1](./Exercise_4/Part_1/Step1.PNG) 2. Define a function called take_recipe() to take recipes from the user, which performs the following operations:
+![Step1](./Achievement_1/Exercise_4/Part_1/Step1.PNG) 2. Define a function called take_recipe() to take recipes from the user, which performs the following operations:
 
 - Taking in the recipe name, cooking time, and ingredients from the user.
 - Calculating the difficulty of the recipe by calling thecalc_difficulty() function.
 - Gathering all these attributes into a dictionary and returning it.
 
-![Step2](./Exercise_4/Part_1/Step2.PNG)
+![Step2](./Achievement_1/Exercise_4/Part_1/Step2.PNG)
 
 3. Define the function calc_diffficulty(), where the difficulty is returned as Easy, Medium, Intermediate or Hard based on the following logic:
    - If cooking_time is less than 10 minutes and the number of ingredients is less than 4, set a variable called difficulty to the value of Easy.
@@ -259,7 +259,7 @@ Next, you’ll have to display all the ingredients that you’ve come across so 
    - If cooking_time is greater than or equal to 10 minutes and the number of ingredients is less than 4, set a variable called difficulty to the value of Intermediate.
    - If cooking_time is greater than or equal to 10 minutes and the number of ingredients is greater than or equal to 4, set a variable called difficulty to Hard.
 
-![Step3](./Exercise_4/Part_1/Step3.PNG)
+![Step3](./Achievement_1/Exercise_4/Part_1/Step3.PNG)
 
 4. Next, you’ll work on the main code. Have the user enter a filename, which would attempt to open a binary file in read mode. Define a try-except-else-finally block as follows:
    - The try block will open the given file, and load its contents through the pickle module into a variable called data. The incoming data is expected to be a dictionary containing two key-value pairs:
@@ -270,29 +270,29 @@ Next, you’ll have to display all the ingredients that you’ve come across so 
    - An else block that closes the file stream that would’ve been opened in the try block.
    - A finally block that extracts the values from the dictionary into two separate lists: recipes_list and all_ingredients.
 
-![Step4](./Exercise_4/Part_1/Step4.PNG)
+![Step4](./Achievement_1/Exercise_4/Part_1/Step4.PNG)
 
 5. Ask the user how many recipes they’d like to enter, and define a for loop that calls the take_recipe() function. You can append the output of this function into recipes_list. Next, define an inner loop that scans through the recipe’s ingredients and adds them to all_ingredients if they’re not already there.
 
-![Step5](./Exercise_4/Part_1/Step5.PNG)
+![Step5](./Achievement_1/Exercise_4/Part_1/Step5.PNG)
 
 6. Gather the updated recipes_list and all_ingredients into the dictionary called data.
 
-![Step6](./Exercise_4/Part_1/Step6.PNG)
+![Step6](./Achievement_1/Exercise_4/Part_1/Step6.PNG)
 
 7. Finally, open a binary file with the user-defined filename and write data to it using the pickle module.
 
-![Step7](./Exercise_4/Part_1/Step7.PNG)
+![Step7](./Achievement_1/Exercise_4/Part_1/Step7.PNG)
 
 ## Part 2
 
 1. Import the pickle module.
 
-![Step1](./Exercise_4/Part_2/Step1.PNG)
+![Step1](./Achievement_1/Exercise_4/Part_2/Step1.PNG)
 
 2. Define a function to display a recipe called display_recipe(), which takes in one recipe (of the dictionary type) as an argument and prints all of its attributes including the recipe name, cooking time, ingredients, and difficulty.
 
-![Step2](./Exercise_4/Part_2/Step2.PNG)
+![Step2](./Achievement_1/Exercise_4/Part_2/Step2.PNG)
 
 3. Define another function called search_ingredient() to search for an ingredient in the given data. The function takes in a dictionary called data as its argument. The function will perform the following steps:
    - First, it shows the user all the available ingredients contained in data, under the key all_ingredients. Each ingredient is displayed with a number (take the index of each ingredient for this purpose using the enumerate() function).
@@ -300,33 +300,33 @@ Next, you’ll have to display all the ingredients that you’ve come across so 
    - Make an except clause that warns the user if the input is incorrect.
    - Add an else clause that goes through every recipe in data (hint: recipes_list is the key that holds every recipe). Each recipe that contains the given ingredient will be printed.
 
-![Step3](./Exercise_4/Part_2/Step3.PNG)
+![Step3](./Achievement_1/Exercise_4/Part_2/Step3.PNG)
 
 4. In the main code, ask the user for the name of the file that contains your recipe data.
 
-![Step4](./Exercise_4/Part_2/Step4.PNG)
+![Step4](./Achievement_1/Exercise_4/Part_2/Step4.PNG)
 
 5. Use a try block to open the file, and then extract its contents into data (from Step 3) using the pickle module.
 
-![Step5](./Exercise_4/Part_2/Step5.PNG)
+![Step5](./Achievement_1/Exercise_4/Part_2/Step5.PNG)
 
 6. For when the try block fails, add an except block to warn the user that the file hasn’t been found.
 
-![Step6](./Exercise_4/Part_2/Step6.PNG)
+![Step6](./Achievement_1/Exercise_4/Part_2/Step6.PNG)
 
 7. Define an else block that calls search_ingredient() while passing data into it as an argument.
 
-![Step7](./Exercise_4/Part_2/Step7.PNG)
+![Step7](./Achievement_1/Exercise_4/Part_2/Step7.PNG)
 
 ## Part 3
 
 1. Run “recipe_input.py” and enter a few sample recipes of your choice. Make sure the script can generate a binary file after execution. Take screenshots of your terminal while executing the script.
 
-![Step1](./Exercise_4/Part_3/Step1.PNG)
+![Step1](./Achievement_1/Exercise_4/Part_3/Step1.PNG)
 
 2. Run “recipe_search.py”, enter the ingredient to be searched for, and make sure you get the desired output with the relevant recipes. Take more screenshots of the script while executing.
 
-![Step2](./Exercise_4/Part_3/Step2.PNG)
+![Step2](./Achievement_1/Exercise_4/Part_3/Step2.PNG)
 
 ---
 
@@ -365,7 +365,7 @@ Define a class Recipe, with the following data attributes:
   - If cooking_time is greater than or equal to 10 minutes, and the number of ingredients is less than 4, set a variable called difficulty to the value of Intermediate.
   - If cooking_time is greater than or equal to 10 minutes, and the number of ingredients is greater than or equal to 4, set a variable called difficulty to the value of Hard.
 
-![Step1](./Exercise_5/Step1.PNG)
+![Step1](./Achievement_1/Exercise_5/Step1.PNG)
 
 ## Define procedural attributes
 
@@ -375,7 +375,7 @@ Define the following procedural attributes (methods) for the class as well:
 - A method called add_ingredients that takes in variable-length arguments for the recipe’s ingredients. For example, the arguments could be either ("Salt") or even ("Salt", "Pepper", "Flour", "Water", "Bananas", "Marzipan"); your method should take in these ingredients and add them to ingredients. Once all the ingredients are added, this function calls update_all_ingredients() , which you’ll define shortly.
 - A getter method for ingredients that returns the list itself.
 
-![Step2.1](./Exercise_5/Step2.1.PNG)
+![Step2.1](./Achievement_1/Exercise_5/Step2.1.PNG)
 
 - A method called calculate_difficulty() that uses the logic in part 1 of this task, and updates the difficulty of the recipe.
 - A getter method for difficulty which also calls calculate_difficulty() if difficulty hasn’t been calculated.
@@ -383,7 +383,7 @@ Define the following procedural attributes (methods) for the class as well:
 - A method called update_all_ingredients() that goes through the current object’s ingredients and adds them to a class variable called all_ingredients, if they’re not already present. This class variable keeps track of all the ingredients that exist across all recipes.
 - A string representation that prints the entire recipe over a well formatted string.
 
-![Step2.2](./Exercise_5/Step2.2.PNG)
+![Step2.2](./Achievement_1/Exercise_5/Step2.2.PNG)
 
 ## Define a method recipe_search
 
@@ -396,7 +396,7 @@ To find recipes that contain a specific ingredient, define a method called recip
   - Within the object that is in focus, call the search_ingredient method to see if the ingredient is present or not.
   - If the above condition is satisfied, print the recipe.
 
-![Step3](./Exercise_5/Step3.PNG)
+![Step3](./Achievement_1/Exercise_5/Step3.PNG)
 
 ## Make a Recipe object
 
@@ -407,7 +407,7 @@ In the main code, make an object under the Recipe class:
 - Set the cooking time for this recipe as 5 (in minutes).
 - Display the string representation of this object.
 
-![Step4](./Exercise_5/Step4.PNG)
+![Step4](./Achievement_1/Exercise_5/Step4.PNG)
 
 ## Make a few more Recipes
 
@@ -423,21 +423,21 @@ Make a few more recipes with the given attributes, and display their respective 
   - Ingredients: Bananas, Milk, Peanut Butter, Sugar, Ice Cubes
   - Cooking time: 5 minutes
 
-![Step5](./Exercise_5/Step5.PNG)
+![Step5](./Achievement_1/Exercise_5/Step5.PNG)
 
 ## Wrap the recipes into a list
 
 Wrap the recipes into a list called recipes_list.
 
-![Step6](./Exercise_5/Step6.PNG)
+![Step6](./Achievement_1/Exercise_5/Step6.PNG)
 
 ## Use the recipe_search method
 
 Use the recipe_search() method to search for recipes that contain each ingredient out of: Water, Sugar, Bananas.
 
-![Step7](./Exercise_5/Step7.1.PNG)
+![Step7](./Achievement_1/Exercise_5/Step7.1.PNG)
 
-![Step7](./Exercise_5/Step7.2.PNG)
+![Step7](./Achievement_1/Exercise_5/Step7.2.PNG)
 
 # Databases in Python
 
@@ -483,7 +483,7 @@ Before you visualize anything to the user, you should connect your “recipe_mys
 
 As you did with the database, use the EXISTS statement to make sure there isn’t already a table with the same name: CREATE TABLE IF NOT EXISTS <table name>
 
-![Part1](./Exercise_6/Part1.PNG)
+![Part1](./Achievement_1/Exercise_6/Part1.PNG)
 
 ## The Main Menu
 
@@ -504,7 +504,7 @@ If the user exits this loop, any changes to the database would be committed and 
 
 Once you've defined the main_menu() function, call it in the main code. Pass conn and cursor as arguments so that the code inside the main_menu() function can use the database.
 
-![Part2](./Exercise_6/Part2.PNG)
+![Part2](./Achievement_1/Exercise_6/Part2.PNG)
 
 ## Creating a Recipe
 
@@ -528,7 +528,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 3. Now, you have to prepare to wrap this information up in an SQL query so that you can enter it into the Recipes table on your database. Since MySQL doesn’t fully support arrays, your ingredients list needs to be converted into a comma-separated string. This can be done through the join() method, which is used with the syntax: <returned_string> = "<separator characters>".join(<sequence from which items are to be joined>). Here, you need to join the elements of the list ingredients, the separator being a comma followed by a space (", "). Finally, build the query string in the following format: INSERT INTO Recipes (name, ingredients, cooking_time, difficulty) VALUES (<respective values for each column>).
 4. Execute the query, then commit your changes.
 
-![Part3](./Exercise_6/Part3.PNG)
+![Part3](./Achievement_1/Exercise_6/Part3.PNG)
 
 ## Searching for a Recipe
 
@@ -539,7 +539,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
    In your case, an ingredient that you search for can either be in the middle, at the beginning, or at the end of the ingredients string. SQL Server supports the wildcard %, which represents zero or more characters in its position. Hence, if you’re searching for beans within a string, your search pattern should be %beans%.
 5. Use this logic to build your query, fetch the results that satisfy this condition, and display them to the user.
 
-![Part4](./Exercise_6/Part4.PNG)
+![Part4](./Achievement_1/Exercise_6/Part4.PNG)
 
 ## Updating a Recipe
 
@@ -548,7 +548,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 3. Build your query in the form of a string, to update an entry on the table for the given id, column, and updated value. Note that if the user is updating either cooking_time or ingredients, the script will have to recalculate the difficulty of the recipe, then update that column as well (make a separate query for this).
 4. Execute your queries on the table and commit your changes.
 
-![Part5](./Exercise_6/Part5.PNG)
+![Part5](./Achievement_1/Exercise_6/Part5.PNG)
 
 ## Deleting a Recipe
 
@@ -556,23 +556,23 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 2. Build a query using the DELETE statement, where the row to be deleted is identified by the id that the user had specified.
 3. Execute this query and commit your changes to the table.
 
-![Part6](./Exercise_6/Part6.PNG)
+![Part6](./Achievement_1/Exercise_6/Part6.PNG)
 
 ## Final Steps
 
 1. Save your Python script and ensure that your MySQL server is running on your system. Then, run your script.
 2. Create about 3 to 4 simple recipes of your choice using the first option in your menu: Create a Recipe.
-   ![create-recipe](./Exercise_6/create_recipe.PNG)
+   ![create-recipe](./Achievement_1/Exercise_6/create_recipe.PNG)
 3. Run a search by selecting the ingredient to search for, this time using the second option in your script: Search for a Recipe.
-   ![search-recipe](./Exercise_6/search_recipe.PNG)
+   ![search-recipe](./Achievement_1/Exercise_6/search_recipe.PNG)
 
 4. Change a few values in some of your recipes using the third option in your script’s menu: Update a Recipe. 2 or 3 updates should be enough.
-   ![update-recipe](./Exercise_6/update_recipe.PNG)
+   ![update-recipe](./Achievement_1/Exercise_6/update_recipe.PNG)
 
 5. Delete any one of your recipes using the final option: Delete a Recipe.
-   ![delete-recipe](./Exercise_6/delete_recipe.PNG)
+   ![delete-recipe](./Achievement_1/Exercise_6/delete_recipe.PNG)
 6. Exit the script using the exit keyword that you defined before (e.g. quit).
-   ![quit](./Exercise_6/quit.PNG)
+   ![quit](./Achievement_1/Exercise_6/quit.PNG)
 
 # Object-Relational Mapping in Python
 
@@ -598,7 +598,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 4. Use the credentials and details above to create an engine object called engine that connects to your desired database. (Note: You can use the database task_database that you created in the previous Exercise.)
 5. Make the session object that you’ll use to make changes to your database. To do this, generate the Session class, bind it to the engine, and initialize the session object.
 
-![part1](./Exercise_7/Part1.PNG)
+![part1](./Achievement_1/Exercise_7/Part1.PNG)
 
 ## Create Your Model and Table
 
@@ -622,7 +622,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
    - Otherwise, use the split() method available to strings to split the string into a list wherever there’s a comma followed by a space (,). Return this list.
 8. Once you’re done defining your model, create the corresponding table on the database using the create_all() method from Base.metadata.
 
-![part1](./Exercise_7/Part2.PNG)
+![part1](./Achievement_1/Exercise_7/Part2.PNG)
 
 ## Define Your Main Operations
 
@@ -653,7 +653,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 6. Generate the difficulty attribute for this recipe by calling its calculate_difficulty() method.
 7. Add this to your database through the session object, and commit this change.
 
-![create](./Exercise_7/create_recipe.PNG)
+![create](./Achievement_1/Exercise_7/create_recipe.PNG)
 
 ### View All Recipes
 
@@ -661,7 +661,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 2. If there aren’t any entries, inform the user that there aren’t any entries in your database, and exit the function to return to the main menu. (Tip: to exit the function, simply use the return None statement.)
 3. Loop through this list of recipes, and call each of their **str** methods to display each recipe.
 
-![view](./Exercise_7/view_all_recipes.PNG)
+![view](./Achievement_1/Exercise_7/view_all_recipes.PNG)
 
 ### Search By Ingredients
 
@@ -679,7 +679,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
     - Append the search condition containing like_term to the conditions list (e.g., <Model name>.<column to search in>.like(like_term)).
 11. Retrieve all recipes from the database using the filter() query, containing the list conditions. Display these recipes using the **str** method.
 
-![search](./Exercise_7/search_by_ingredients.PNG)
+![search](./Achievement_1/Exercise_7/search_by_ingredients.PNG)
 
 ### Edit Recipe
 
@@ -693,7 +693,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 8. Based on the input, use if-else statements to edit the respective attribute inside the recipe_to_edit object. Recalculate the difficulty using the object’s calculate_difficulty() method.
 9. Commit these changes to the database.
 
-![edit](./Exercise_7/edit_recipe.PNG)
+![edit](./Achievement_1/Exercise_7/edit_recipe.PNG)
 
 ### Delete Recipe
 
@@ -703,7 +703,7 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 4. Based on the selected id, retrieve the corresponding object that exists on the database.
 5. Ask the user if they’re sure that they’d like to delete this entry. If it’s a ‘yes’, perform the delete operation and commit this change. Otherwise, exit the function.
 
-![delete](./Exercise_7/delete_recipe.PNG)
+![delete](./Achievement_1/Exercise_7/delete_recipe.PNG)
 
 # Design Your Main Menu
 
@@ -717,19 +717,19 @@ Once you've defined the main_menu() function, call it in the main code. Pass con
 2. Using if-elif statements, launch the corresponding function based on the user’s input. Use an else statement at the end to handle any malformed input by informing the users of this error and having the loop simply continue to its next iteration to display the main menu again.
 3. Once the user chooses to quit, close session and engine with their respective close() methods, and the script ends there.
 
-![main_menu](./Exercise_7/main_menu.PNG)
+![main_menu](./Achievement_1/Exercise_7/main_menu.PNG)
 
 # Finish Up
 
 1. Create a few recipes of your own through your application.
 2. Run through each option on the menu, testing the app’s functionality by reading, updating, and deleting entries in your database and taking screenshots of your terminal during these operations.
 
-![create](./Exercise_7/create_test.PNG)
+![create](./Achievement_1/Exercise_7/create_test.PNG)
 
-![view](./Exercise_7/view_test.PNG)
+![view](./Achievement_1/Exercise_7/view_test.PNG)
 
-![search](./Exercise_7/search_test.PNG)
+![search](./Achievement_1/Exercise_7/search_test.PNG)
 
-![edit](./Exercise_7/edit_test.PNG)
+![edit](./Achievement_1/Exercise_7/edit_test.PNG)
 
-![delete](./Exercise_7/delete_test.PNG)
+![delete](./Achievement_1/Exercise_7/delete_test.PNG)
